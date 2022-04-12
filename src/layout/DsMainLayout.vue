@@ -25,7 +25,7 @@
       <div class="content">
         <ds-menu icon="email" :lists="appNotification" />
         <ds-menu icon="notifications" :lists="appNotification" />
-        <ds-menu :lists="userMenu">
+        <ds-menu :lists="userMenu" class="mr-56">
           <template #info>
             Hello Bjoern! &nbsp;
             <ds-svg name="avatar" />
@@ -145,17 +145,15 @@ export default {
     flex-direction: column;
   }
 }
-.sidebar-list li:active {
-  font-family: "Segoe UI Semibold", "Segoe UI Regular", "Segoe UI", sans-serif !important;
-  font-weight: 600 !important;
-  color: #ffffff !important;
+.sidebar-list a:-webkit-any-link:active{
+  color: transparent !important;
 }
-// a.router-link-exact-active{
-//    color: red !important;
-// }
 .arrow-img {
   transform: rotate(270deg);
   padding: 2px 2px 2px 2px;
   background-color: #ffffff;
+}
+.mr-56{
+    margin-right: 56px;
 }
 </style>

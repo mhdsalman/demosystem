@@ -32,11 +32,10 @@ export default {
   height: 100%;
   background-color: white;
   box-sizing: border-box;
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.13);
   padding: 2px;
-  border-radius: 15px;
+  border-radius: 2px;
   border: none;
-  margin: 2% 0;
   // Slots
   &-header {
     padding: 0px;

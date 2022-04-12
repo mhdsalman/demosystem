@@ -5,12 +5,39 @@
    <div class="left">
     <p id="all-bank-accounts">All Transactions</p>
     <ds-input class="api-key" placeholder="Enter API key" />
-    <ds-select v-model="account" :list="list" />
+    <ds-input class="api-key" placeholder="Enter API key" />
    </div>
    <div class="right">
     <ds-button label="All Transactions"/>
    </div>
   </header>
+   <ds-card>
+      <template #body>
+          {{bodyData}}
+        <ds-table class="table-view" :header="tableHeader" v-model="bodyData">
+          <template #icon="row">
+            <p class="text-td">{{ row.data.date }}</p>
+          </template>
+          <template #name="row">
+            <p class="text-td">{{ row.data.paymentPartner }}</p>
+          </template>
+          <template #status="row">
+            <p class="text-td">{{ row.data.ammount }}</p>
+          </template>
+          <template #transactionsFetched="row">
+            <p class="text-td pl-1">{{ row.data.referencePurpose }}</p>
+          </template>
+          <template #lastRun="row">
+            <p class="text-td">{{ row.data.TransactionDate }}</p>
+          </template>
+          <template #actions="row">
+            <a class="text-td">{{ row.data.refresh }}</a>
+            <a class="text-td">{{ row.data.setting }}</a>
+            <a class="text-td">{{ row.data.delete }}</a>
+          </template>
+        </ds-table>
+      </template>
+    </ds-card>
  </div>
 </template>
 
@@ -19,20 +46,152 @@ import DsInput from '../../components/DsInput.vue'
 import DsButton from '../../components/DsButton.vue'
 import DsSelect from '../../components/DsSelect.vue'
 import AddAccount from '../BankAccount/partials/AddAccount.vue'
+import DsTable from "../../components/DsTable.vue";
+import DsCard from "../../components/DsCard.vue";
+
+const people = [
+  {
+    referencePurpose: 'Purpose Detail',
+    ammount: '€150',
+    date: '03/02/22',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'light-gray',
+    paymentPartner: 'John Doe'
+
+  },
+  {
+    referencePurpose: 'Purpose Detail',
+    ammount: '€250',
+    date: '03/02/22',
+    status: 'refresh',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'gray',
+    paymentPartner: 'Alexis Phelipe'
+
+  },
+  {
+    referencePurpose: 'Purpose Detail',
+    status: 'refresh',
+    ammount: '€150',
+    date: '03/02/22',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'black',
+    paymentPartner: 'John Doe'
+
+  },
+  {
+    referencePurpose: 'Purpose Detail',
+    ammount: '€250',
+    date: '02/02/22',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'light-gray',
+    paymentPartner: 'Alexis Phelipe'
+
+  },
+  {
+    referencePurpose: 'Purpose Detail',
+    ammount: '€150',
+    date: '02/02/22',
+    status: 'refresh',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'gray',
+    paymentPartner: 'John Doe'
+
+  },
+  {
+    referencePurpose: 'Purpose Detail',
+    ammount: '€250',
+    date: '02/02/22',
+    status: 'refresh',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'black',
+    paymentPartner: 'Alexis Phelipe'
+
+  },
+  {
+    referencePurpose: 'Purpose Detail',
+    ammount: '€150',
+    date: '02/02/22',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'light-gray',
+    paymentPartner: 'John Doe'
+
+  },
+  {
+    referencePurpose: 'Purpose Detail',
+    ammount: '€250',
+    date: '01/02/22',
+    status: 'refresh',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'gray',
+    paymentPartner: 'Alexis Phelipe'
+
+  },
+  {
+    referencePurpose: 'Purpose Detail',
+    ammount: '€150',
+    date: '01/02/22',
+    status: 'refresh',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'black',
+    paymentPartner: 'John Doe'
+
+  },
+  {
+    referencePurpose: 'Purpose Detail',
+    ammount: '€250',
+    date: '01/02/22',
+    TransactionDate: '03/02/22 - 03:37 PM',
+    colorIcon: 'light-gray',
+    paymentPartner: 'Alexis Phelipe'
+
+  }
+]
 export default {
  name: "Transactions",
  data: () => ({
   account: '',
   list: ['-Account-', 'Account 1', 'Account 2'],
   show: false,
+  people,
+      tableHeader: [
+        {
+          label: 'Date',
+          name: 'icon',
+          space: 'half'
+        },
+        {
+          label: 'Payment Partner',
+          name: 'name'
+        },
+        {
+          label: 'Amount',
+          name: 'status',
+          space: 'status'
+        },
+        {
+          label: 'Reference Purpose',
+          name: 'transactionsFetched'
+        },
+        {
+          label: 'Transaction Date',
+          name: 'lastRun',
+          space: 'trnsDate'
+        }
+      ]
  }),
- components: { DsInput, DsButton, DsSelect, AddAccount },
+ components: { DsInput, DsButton, DsSelect, AddAccount, DsTable, DsCard },
+ computed:{
+    bodyData(){
+         return this.people
+      }
+ }
 }
 </script>
 
 <style lang="scss" scoped>
 .ds-transaction {
- padding: 16px;
+ padding:0px 85px 16px 16px;
 
  header {
   width: 100%;

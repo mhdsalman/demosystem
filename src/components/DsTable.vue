@@ -25,6 +25,7 @@
       </div>
     </div>
     <div class="pd-tbody">
+      <!-- {{value}} -->
       <div class="pd-tbody-tr" v-for="(item, index) in value" :key="index">
         <div
           class="pd-tbody-td"
