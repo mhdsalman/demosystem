@@ -67,12 +67,16 @@ export default {
   align-items: center;
   cursor: pointer;
   height: 32px;
+  padding: 0px 16px 0px 16px;
   border-radius: 2px;
   border: 1px solid #2f2f2f;
   background-color: #2f2f2f;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
   color: #ffffff;
   text-align: center;
   line-height: normal;
+  font-size: 14px;
 
   &.bg {
     &-default {

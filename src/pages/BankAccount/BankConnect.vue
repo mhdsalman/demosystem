@@ -4,8 +4,12 @@
     <header>
       <div class="left">
         <p id="all-bank-accounts">All Bank Accounts</p>
-        <ds-input class="api-key" placeholder="Enter API key" />
-        <ds-select v-model="account" :list="list" />
+        <ds-input
+          class="api-key"
+          inputClass="true"
+          placeholder="Enter API key"
+        />
+        <ds-select v-model="account" :list="list" class="ds-selector" />
       </div>
       <div class="right">
         <ds-button label="Add Account" @click="show = false" />
@@ -13,35 +17,30 @@
     </header>
     <ds-card>
       <template #body>
-         
-         <ds-table class="table-view" :header="tableHeader" v-model="bodyData">
-        <template #icon="row">
-          <p class="text-td">{{row.data.image}}</p>
-        </template>
-        <template #name="row">
-          <p class="text-td">{{ row.data.name }}</p>
-        </template>
-        <template #status="row">
+        <ds-table class="table-view" :header="tableHeader" v-model="bodyData">
+          <template #icon="row">
+            <p class="text-td">{{ row.data.image }}</p>
+          </template>
+          <template #name="row">
+            <p class="text-td">{{ row.data.name }}</p>
+          </template>
+          <template #status="row">
             <ds-image class="status-logo" :name="row.data.colorIcon" />
             <p class="text-td">{{ row.data.status }}</p>
-              <ds-image
-                v-if="row.data.title === 'refresh'"
-                name="help"
-              />
-        </template>
-        <template #transactionsFetched="row">
-          <p class="text-td pl-1">{{ row.data.transactionsFetched }}</p>
-        </template>
-        <template #lastRun="row">
-          <p class="text-td">{{ row.data.lastFetched }}</p>
-        </template>
-        <template #actions="row">
-          <a class="text-td">{{ row.data.refresh }}</a>
-          <a class="text-td">{{ row.data.setting }}</a>
-          <a class="text-td">{{ row.data.delete }}</a>
-
-        </template>
-      </ds-table>
+            <ds-image v-if="row.data.title === 'refresh'" name="help" />
+          </template>
+          <template #transactionsFetched="row">
+            <p class="text-td pl-1">{{ row.data.transactionsFetched }}</p>
+          </template>
+          <template #lastRun="row">
+            <p class="text-td">{{ row.data.lastFetched }}</p>
+          </template>
+          <template #actions="row">
+            <a class="text-td">{{ row.data.refresh }}</a>
+            <a class="text-td">{{ row.data.setting }}</a>
+            <a class="text-td">{{ row.data.delete }}</a>
+          </template>
+        </ds-table>
       </template>
     </ds-card>
     <!-- modal -->
@@ -204,7 +203,7 @@ export default {
   name: "Transactions",
   data: () => ({
     account: "",
-    list: ["-Account-", "Account 1", "Account 2"],
+    list: ["- Account -", "Account 1", "Account 2"],
     show: false,
     selected: null,
     people,
@@ -235,17 +234,17 @@ export default {
     ],
   }),
   components: { DsInput, DsButton, DsSelect, AddAccount, DsCard, DsTable },
-  computed:{
-      bodyData(){
-         return this.people
-      }
-  }
+  computed: {
+    bodyData() {
+      return this.people;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .ds-backconnect {
-   padding:0px 85px 16px 16px;
+  padding: 0px 85px 16px 16px;
 
   header {
     width: 100%;
@@ -257,17 +256,23 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex: 0.5;
 
       #all-bank-accounts {
         font-size: 22px;
         color: #323130;
         white-space: nowrap;
-        font-weight: 600;
+        font-weight: normal;
+        font-family: "Arial", sans-serif;
       }
 
       .api-key {
-        margin: 0 20px;
+        margin-left: 120px;
+        margin-right: 10px;
+        width: 240px;
+      }
+      .ds-selector {
+        width: 150px;
+        height: 36px;
       }
     }
   }

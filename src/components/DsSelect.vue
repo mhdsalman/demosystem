@@ -4,11 +4,11 @@
    <label for="drop-down">{{ label }}</label>
   </div>
   <div :class="['selector', { 'aselect-active-border': visible }]">
-   <div class="selected" @click="open">
+   <div class="selected"  @click="open">
     <span>{{ modalValue || list[0] }}</span>
    </div>
    <div class="arrow">
-    <ds-svg name="dropdown" />
+    <ds-svg name="down-arrow" />
    </div>
    <div v-if="visible">
     <ul>
@@ -99,18 +99,26 @@ export default {
   position: relative;
   z-index: 1;
   border-radius: 2px;
+    padding: 2px 2px 2px 10px;
+  border-radius: 3px;
+  border: 1px solid #8a8886;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  color: #595959;
+  font-size: 12px;
+  height: 36px;
 
   .arrow {
-   display: flex;
    align-content: center;
    position: absolute;
-   right: 20px;
-   top: 40%;
    width: 0;
    height: 0;
    border-left: 7px solid transparent;
    border-right: 7px solid transparent;
    transition-duration: 0.3s;
+   right: 13px;
+   top: 19%;
   }
 
   .selected {
@@ -136,6 +144,7 @@ export default {
   border: 1px solid #9b9b9b;
   top: 100%;
   right: 0%;
+  font-size: 12px;
  }
 
  li {

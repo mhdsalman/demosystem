@@ -4,7 +4,7 @@
    <p :for="type" v-if="label">{{ label }}</p>
    <span v-if="isRequired" class="is-required">*</span>
   </div>
-  <input v-model="inputValue" :placeholder="placeholder" :type="type" class="input" @input="inputHandler($event)"
+  <input v-model="inputValue" :placeholder="placeholder" :type="type" :class="[ inputClass ? 'bank-input': 'input']" @input="inputHandler($event)"
    @blur="handleBlur" @focus="onFocus" :required="isRequired" :color="isError ? 'danger' : 'secondary'" />
  </div>
 </template>
@@ -33,6 +33,10 @@ export default {
    type: String,
    default: "",
   },
+  inputClass:{
+    type: String,
+    default:''
+  }
  },
  components: {
   BcImage,
@@ -100,22 +104,34 @@ export default {
 
  .input {
   outline: none;
-  width: 100%;
-  height: 40px;
+  width: 240px;
+  height: 30px;
   padding: 2px 2px 2px 10px;
   border-radius: 2px;
   border: 1px solid #8a8886;
   background-color: white;
   box-sizing: border-box;
   font-size: 14px;
-  color: #4b4b4b;
+  color: #323130;
   text-overflow: ellipsis;
  }
-
- .input:focus-visible {
-  border: 2px solid black;
+ .bank-input{
+  width: 240px;
+  height: 36px;
+  padding: 2px 2px 2px 10px;
+  border-radius: 2px;
+  border: 1px solid #8a8886;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  font-family: 'PingFang SC ', 'PingFang SC', sans-serif;
+  color: #999999;
  }
-
+ .input:focus-visible {
+  border: 2px solid #0091f7;
+ }
+ .bank-input:focus-visible{
+    border: 2px solid #000 !important;
+ }  
  .bc-input-required {
   border: 2px solid lightcoral;
  }

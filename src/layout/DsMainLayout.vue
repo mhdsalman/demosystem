@@ -10,12 +10,14 @@
         <router-link to="#">
           <li>Dashboard</li>
         </router-link>
-        <router-link to="/account">
-          <li>Bank Connect</li>
-        </router-link>
-        <!-- <span>
-          <img src="scr/assets/images/arrow.svg" class="arrow-img" />
-        </span> -->
+        <div class="d-flex">
+          <router-link to="/account">
+            <li>Bank Connect</li>
+          </router-link>
+          <div class="ds-arrow">
+            <ds-svg name="arrow" class="arrow-img" />
+          </div>
+        </div>
         <router-link to="/transaction">
           <li>Transactions</li>
         </router-link>
@@ -25,9 +27,10 @@
       <div class="content">
         <ds-menu icon="email" :lists="appNotification" />
         <ds-menu icon="notifications" :lists="appNotification" />
-        <ds-menu :lists="userMenu" class="mr-56">
+        <ds-menu :lists="userMenu" class="menu-margin">
           <template #info>
-            Hello Bjoern! &nbsp;
+            <h3 class="text-style">Hello Bjoern!</h3>
+            &nbsp;
             <ds-svg name="avatar" />
           </template>
         </ds-menu>
@@ -145,15 +148,28 @@ export default {
     flex-direction: column;
   }
 }
-.sidebar-list a:-webkit-any-link:active{
+.sidebar-list a:-webkit-any-link:active {
   color: transparent !important;
 }
 .arrow-img {
   transform: rotate(270deg);
-  padding: 2px 2px 2px 2px;
-  background-color: #ffffff;
 }
-.mr-56{
-    margin-right: 56px;
+.menu-margin {
+  margin-right: 56px;
+  margin-left: 35px;
+}
+.d-flex {
+  display: flex;
+}
+.ds-arrow {
+  display: flex;
+  align-items: center;
+  margin: auto 0 auto auto;
+}
+.text-style {
+  font-family: "Arial", sans-serif;
+  color: #323130;
+  font-size: 18px;
+  font-weight: normal;
 }
 </style>
