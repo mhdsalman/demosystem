@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick" :style="[{ width: width + 'px' }]" :size="size"
+  <button @click.prevent="onClick" :style="[{ width: width + 'px' }]" :size="size"
     :class="['ds-button', `bg-${background}`, `size-${size}`]">
     <ds-svg v-if="iconBefore" class="btn-icon" :name="iconBefore" />
     <slot name="before"></slot>

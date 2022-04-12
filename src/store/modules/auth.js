@@ -6,7 +6,7 @@ const state = () => ({
 
 // getters
 const getters = {
-  isLoggedIn: state => state.isLogin,
+  isLoggedIn: state => state.isLogin || localStorage.getItem('ds-token'),
 }
 
 // actions

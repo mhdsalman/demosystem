@@ -24,7 +24,7 @@ export default {
     DsMainLayout
   },
   created() {
-    localStorage.removeItem('ds-token')
+   // localStorage.removeItem('ds-token')
   }
 }
 </script>
