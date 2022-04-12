@@ -6,7 +6,8 @@
         scope="col"
         :key="index"
         :ref="`col-${index}`"
-        :class="[ 'th-padding',
+        :class="[
+          'th-padding',
           position ? `align-${position}` : 'align-left',
           space ? `width-${space}` : 'width-full',
           margin ? `th-margin` : 'null',
@@ -25,8 +26,7 @@
       </div>
     </div>
     <div class="pd-tbody">
-      {{value}}
-      <div class="pd-tbody-tr" v-for="(item, index) in value" :key="index">
+      <div class="pd-tbody-tr" v-for="(item, index) in modelValue" :key="index">
         <div
           class="pd-tbody-td"
           v-for="(col, colIndex) in header"
@@ -44,32 +44,35 @@
 </template>
 
 <script>
-import DsImage from './DsImage.vue'
+import DsImage from "./DsImage.vue";
 export default {
-  name: 'PdTable',
+  name: "PdTable",
   components: {
-    DsImage
+    DsImage,
   },
   props: {
     header: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
-    value: {
+    modelValue: {
       type: Array,
-      default: () => []
-    }
+      required: true,
+    },
   },
   computed: {
-    hasHeader () {
-      return !!this.header.length
+    hasHeader() {
+      return !!this.header.length;
     },
-    hasData () {
-      return !!this.value.length
-    }
+    hasData() {
+      return !!this.value.length;
+    },
   },
-  methods: {}
-}
+  methods: {},
+  created(){
+    console.log(this.modelValue)
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -84,8 +87,7 @@ export default {
       color: #333333;
       font-size: 14px;
       line-height: normal;
-      font-family: 'PingFang SC ', 'PingFang SC', sans-serif;
-
+      font-family: "PingFang SC ", "PingFang SC", sans-serif;
     }
   }
   .pd-tbody {
@@ -100,16 +102,17 @@ export default {
         width: 100%;
         height: 48px;
         align-items: center;
-        p,a{
-    font-family: 'Arial', sans-serif;
-    color: #333333;
-    text-align: left;
-    line-height: normal;
-    font-size: 12px
+        p,
+        a {
+          font-family: "Arial", sans-serif;
+          color: #333333;
+          text-align: left;
+          line-height: normal;
+          font-size: 12px;
         }
       }
       .pd-tbody-td:hover {
-          background: #e4e4e482;
+        background: #e4e4e482;
       }
     }
   }
@@ -154,11 +157,11 @@ export default {
   &-action {
     flex: 240px !important;
   }
-  &-trnsDate{
+  &-trnsDate {
     flex: 562px !important;
   }
 }
-.th-padding{
+.th-padding {
   padding: 2px 15px 2px 15px;
   width: 100%;
 }

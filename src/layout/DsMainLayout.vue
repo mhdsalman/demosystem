@@ -30,8 +30,8 @@
     </div>
     <div class="app-pages">
       <div class="content">
-        <ds-menu icon="email" :lists="appNotification" />
-        <ds-menu icon="notifications" :lists="appNotification" />
+        <ds-menu icon="email" :lists="appeEmail"  dotIcon='gray-dot' width="249" />
+        <ds-menu icon="notifications" :lists="appNotification" dotIcon='gray-dot' width="249"/>
         <ds-menu :lists="userMenu" class="menu-margin">
           <template #info>
             <h3 class="text-style">Hello Bjoern!</h3>
@@ -57,13 +57,29 @@ export default {
   name: "MainLayout",
   data: () => ({
     open: true,
-    appNotification: [
+    appeEmail: [
       {
         name: "New Email Received !",
       },
       {
         name: "New Email Received !",
       },
+    ],
+    appNotification:[
+      {
+        name:'New Client Added'
+      },{
+        name:'New Account Added'
+      },
+      {
+        name:'New Environment Added'
+      },{
+        name:'New Connection Created'
+      },{
+        name:'New Process Added'
+      },{
+        name:'New Suggestion Created'
+      }
     ],
     userMenu: [
       {

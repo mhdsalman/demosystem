@@ -39,6 +39,8 @@
         </ds-table>
       </template>
     </ds-card>
+     <!-- footer -->
+    <ds-footer />
   </div>
 </template>
 
@@ -49,6 +51,7 @@ import DsSelect from "../../components/DsSelect.vue";
 import AddAccount from "../BankAccount/partials/AddAccount.vue";
 import DsTable from "../../components/DsTable.vue";
 import DsCard from "../../components/DsCard.vue";
+import DsFooter from '../../layout/DsFooter.vue';
 
 const people = [
   {
@@ -171,7 +174,7 @@ export default {
       },
     ],
   }),
-  components: { DsInput, DsButton, DsSelect, AddAccount, DsTable, DsCard },
+  components: { DsInput, DsButton, DsSelect, AddAccount, DsTable, DsCard, DsFooter },
   computed: {
     bodyData() {
       return this.people;
@@ -212,5 +215,11 @@ export default {
       }
     }
   }
+}
+.text-td{
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  color: #333333;
+  font-size: 12px;
 }
 </style>

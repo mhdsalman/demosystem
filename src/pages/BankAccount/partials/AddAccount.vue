@@ -1,18 +1,46 @@
 <template>
   <div>
-    <ds-modal modal-label="Add Account" :visible="isModalVisible" :show-action="false" @toggle="toggle">
+    <ds-modal
+      v-if="isModalVisible"
+      modal-label="Add Account"
+      :visible="true"
+      :show-action="false"
+      @toggle="toggle"
+    >
       <template #content>
         <div class="content">
           <p>From where do you want to import data</p>
           <div class="connections">
-            <ds-connection-card v-for="item in connections" @click="onCheck(item)" :key="item.id" :label="item.name"
-              :check="item.isCheck" />
+            <ds-connection-card
+              v-for="item in connections"
+              @click="onCheck(item)"
+              :key="item.id"
+              :label="item.name"
+              :check="item.isCheck"
+            />
           </div>
           <div class="actions">
-            <ds-button class="next" v-if="step <= connections.length - 1" width="120" label="Next" @click="goNext" />
-            <ds-button class="previous" v-if="step > 0 && connections.length - 1" width="120" label="Previous"
-              @click="goBack" />
-            <ds-button class="finish" v-else width="120" label="Finish" @click="onSubmit" />
+            <ds-button
+              class="previous"
+              v-if="step > 0 && step < connections.length"
+              width="120"
+              label="Previous"
+              @click="goBack"
+            />
+            <ds-button
+              class="next"
+              v-if="step < connections.length"
+              width="120"
+              label="Next"
+              @click="goNext"
+            />
+            <ds-button
+              class="finish"
+              v-else
+              width="120"
+              label="Finish"
+              @click="onSubmit"
+            />
           </div>
         </div>
       </template>
@@ -21,32 +49,33 @@
 </template>
 
 <script>
-import DsModal from "../../../components/DsModal.vue"
-import DsConnectionCard from "../../../components/DsConnectionCard.vue"
-import DsButton from "../../../components/DsButton.vue"
+import DsModal from "../../../components/DsModal.vue";
+import DsConnectionCard from "../../../components/DsConnectionCard.vue";
+import DsButton from "../../../components/DsButton.vue";
 export default {
   name: "Add Account",
   data: () => ({
     connections: [
       {
-        id: 'bank',
-        name: 'Bank / Credit Card',
-        isCheck: false
+        id: "bank",
+        name: "Bank / Credit Card",
+        isCheck: false,
       },
       {
-        id: 'paypal',
-        name: 'PayPal',
-        isCheck: false
+        id: "paypal",
+        name: "PayPal",
+        isCheck: false,
       },
       {
-        id: 'stripe',
-        name: 'Stripe',
-        isCheck: false
-      }, {
-        id: 'accounting',
-        name: 'Accounting Software',
-        isCheck: false
-      }
+        id: "stripe",
+        name: "Stripe",
+        isCheck: false,
+      },
+      {
+        id: "accounting",
+        name: "Accounting Software",
+        isCheck: false,
+      },
     ],
     checkedItem: null,
     step: 0,
@@ -55,12 +84,12 @@ export default {
     showModal: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   watch: {
     showModal(val) {
       this.isModalVisible = val;
-    }
+    },
   },
   methods: {
     onCheck(item) {
@@ -72,33 +101,39 @@ export default {
         } else {
           this.connections[index].isCheck = false;
         }
-      })
+      });
     },
     goNext() {
-      if (this.checkedItem && this.step < this.connections.length - 1) {
-        this.step = this.step + 1
+      if (this.checkedItem && this.step < this.connections.length) {
+        this.step = this.step + 1;
       }
     },
     goBack() {
       if (this.step < 1) {
-        return
+        return;
       }
       this.step--;
     },
     onSubmit() {
-      //close modal
+      this.toggle()
     },
-    toggle(visible) {
-      console.log(visible)
+    toggle() {
       this.isModalVisible = false;
+      this.$emit("close");
+      //Resetting form
+      this.step = 0;
+      this.checkedItem = null;
+      this.connections.forEach((connection, index) => {
+        this.connections[index].isCheck = false;
+      })
     }
   },
   components: {
     DsModal,
     DsButton,
-    DsConnectionCard
-  }
-}
+    DsConnectionCard,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -108,7 +143,7 @@ export default {
   align-items: center;
   flex-direction: column;
 
-  >p {
+  > p {
     font-size: 22px;
     font-weight: 600;
 

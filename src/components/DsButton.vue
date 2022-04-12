@@ -1,6 +1,6 @@
 <template>
   <button @click.prevent="onClick" :style="[{ width: width + 'px' }]" :size="size"
-    :class="['ds-button', `bg-${background}`, `size-${size}`]">
+    :class="[ customStyle ? 'default-btn custom-btn': 'default-btn ds-button', `bg-${background}`, `size-${size}`]">
     <ds-svg v-if="iconBefore" class="btn-icon" :name="iconBefore" />
     <slot name="before"></slot>
     &nbsp;&nbsp;{{ label }}&nbsp;&nbsp;
@@ -49,6 +49,10 @@ export default {
       type: String,
       default: null,
     },
+    customStyle:{
+      type:String,
+      default: ''
+    }
   },
   methods: {
     onClick() {
@@ -59,7 +63,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ds-button {
+.default-btn{
   outline: none;
   border: none;
   display: flex;
@@ -106,5 +110,16 @@ export default {
     width: 18px;
     height: 18px;
   }
+ 
 }
+ .custom-btn{
+   width: 90px;
+  height: 32px;
+  color: #000 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #e4e4e4;
+  font-family: 'PingFang SC ', 'PingFang SC', sans-serif;
+  color: #333333;
+  font-size: 12px;
+  }
 </style>

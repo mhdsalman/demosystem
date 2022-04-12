@@ -33,7 +33,7 @@ export default {
   background-color: white;
   box-sizing: border-box;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.13);
-  padding: 2px;
+  padding: 27px;
   border-radius: 2px;
   border: none;
   // Slots

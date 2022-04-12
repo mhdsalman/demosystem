@@ -50,9 +50,7 @@ export default {
 
  methods: {
   select(option, index) {
-   if (index === 0) {
-    return;
-   }
+   
    this.modalValue = option;
    this.visible = false;
    this.$emit("input", option);

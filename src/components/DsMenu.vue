@@ -5,22 +5,30 @@
       &nbsp;&nbsp;
       <ds-svg :name="icon" />
     </span>
-    <menu v-if="lists.length" :class="[
-      'ds-menu-dropdown',
-      { hide: !visible },
-      `position-${position || 'right'}`,
-    ]">
-      <div v-for="(item, index) in lists" :key="index" :class="['item', { 'item-hover': !item.disable }]"
-        @click="itemClicked(item)">
-        <div :class="[
-          'menu-items',
-          { 'disable-item': item.disable },
-        ]">
-          <span>
-            <ds-svg v-if="item.icon" :name="item.icon" />
+    <menu
+      v-if="lists.length"
+      :class="[
+        'ds-menu-dropdown',
+        { hide: !visible },
+        `position-${position || 'right'}`,
+      ]"
+      :style="[{ width: width + 'px' }]"
+    >
+      <div
+        v-for="(item, index) in lists"
+        :key="index"
+        :class="['item', { 'item-hover': !item.disable }]"
+        @click="itemClicked(item)"
+      >
+        <div :class="['menu-items', { 'disable-item': item.disable }]">
+          <span v-if="item.icon">
+            <ds-svg :name="item.icon" />
           </span>
           <li>{{ item.name }}</li>
         </div>
+        <span v-if="dotIcon" class="custom-dot">
+          <ds-svg :name="dotIcon" />
+        </span>
       </div>
     </menu>
   </div>
@@ -45,8 +53,16 @@ export default {
     },
     icon: {
       type: String,
-      default: 'dropdown-button',
-    }
+      default: "dropdown-button",
+    },
+    dotIcon: {
+      type: String,
+      default: "",
+    },
+    width: {
+      type: String,
+      default: "",
+    },
   },
   methods: {
     open() {
@@ -156,6 +172,9 @@ export default {
     li {
       color: #cccccc !important;
     }
+  }
+  .custom-dot {
+    margin: auto 0 auto auto;
   }
 
   @keyframes slideDown {

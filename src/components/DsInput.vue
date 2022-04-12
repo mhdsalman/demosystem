@@ -6,11 +6,12 @@
   </div>
   <input v-model="inputValue" :placeholder="placeholder" :type="type" :class="[ inputClass ? 'bank-input': 'input']" @input="inputHandler($event)"
    @blur="handleBlur" @focus="onFocus" :required="isRequired" :color="isError ? 'danger' : 'secondary'" />
+   <ds-svg v-if="iconName" :name="iconName" class="custom-svg"/>
  </div>
 </template>
 
 <script>
-import BcImage from "./DsSvg.vue";
+import DsSvg from "./DsSvg.vue";
 export default {
  props: {
   value: {
@@ -36,10 +37,14 @@ export default {
   inputClass:{
     type: String,
     default:''
+  },
+  iconName:{
+    type: String,
+    default:''
   }
  },
  components: {
-  BcImage,
+  DsSvg,
  },
  created() {
   this.inputValue = this.value;
@@ -109,7 +114,7 @@ export default {
   padding: 2px 2px 2px 10px;
   border-radius: 2px;
   border: 1px solid #8a8886;
-  background-color: white;
+  background-color: ffffff;
   box-sizing: border-box;
   font-size: 14px;
   color: #323130;
@@ -118,22 +123,26 @@ export default {
  .bank-input{
   width: 240px;
   height: 36px;
-  padding: 2px 2px 2px 10px;
+  padding: 2px 28px 2px 10px;
   border-radius: 2px;
   border: 1px solid #8a8886;
   background-color: #ffffff;
   box-sizing: border-box;
   font-family: 'PingFang SC ', 'PingFang SC', sans-serif;
   color: #323130;
+  position: relative;
  }
  .input:focus-visible {
   border: 2px solid #0091f7;
  }
  .bank-input:focus-visible{
     border: 2px solid #000 !important;
- }  
- .bc-input-required {
-  border: 2px solid lightcoral;
+ }
+ .custom-svg{
+  position: absolute;
+   
+    margin-left: -24px;
+    margin-top: 14px;
  }
 }
 </style>

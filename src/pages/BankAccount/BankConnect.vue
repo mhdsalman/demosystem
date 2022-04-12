@@ -8,11 +8,12 @@
           class="api-key"
           inputClass="true"
           placeholder="Enter API key"
+          iconName="api-key-icon"
         />
         <ds-select v-model="account" :list="list" class="ds-selector" />
       </div>
       <div class="right">
-        <ds-button label="Add Account" @click="show = false" />
+        <ds-button label="Add Account" @click="show = true" />
       </div>
     </header>
     <ds-card>
@@ -25,9 +26,9 @@
             <p class="text-td">{{ row.data.name }}</p>
           </template>
           <template #status="row">
-            <ds-image class="status-logo" :name="row.data.colorIcon" />
+            <ds-svg class="status-logo" :name="row.data.colorIcon" />
             <p class="text-td">{{ row.data.status }}</p>
-            <ds-image v-if="row.data.title === 'refresh'" name="help" />
+            <ds-svg v-if="row.data.title === 'refresh'" name="help" />
           </template>
           <template #transactionsFetched="row">
             <p class="text-td pl-1">{{ row.data.transactionsFetched }}</p>
@@ -36,15 +37,17 @@
             <p class="text-td">{{ row.data.lastFetched }}</p>
           </template>
           <template #actions="row">
-            <a class="text-td">{{ row.data.refresh }}</a>
-            <a class="text-td">{{ row.data.setting }}</a>
-            <a class="text-td">{{ row.data.delete }}</a>
+            <a class="text-td-action">{{ row.data.refresh }}</a>
+            <a class="text-td-action">{{ row.data.setting }}</a>
+            <a class="text-td-action">{{ row.data.delete }}</a>
           </template>
         </ds-table>
       </template>
     </ds-card>
+    <!-- footer -->
+    <ds-footer />
     <!-- modal -->
-    <add-account :show-modal="show" />
+    <add-account :show-modal="show" @close="show = fasle" />
   </div>
 </template>
 
@@ -55,6 +58,8 @@ import DsSelect from "../../components/DsSelect.vue";
 import AddAccount from "./partials/AddAccount.vue";
 import DsCard from "../../components/DsCard.vue";
 import DsTable from "../../components/DsTable.vue";
+import DsFooter from '../../layout/DsFooter.vue';
+import DsSvg from '../../components/DsSvg.vue';
 
 const people = [
   {
@@ -231,9 +236,15 @@ export default {
         name: "lastRun",
         space: "trnsDate",
       },
+      {
+        label: "Actions",
+        name: "actions",
+      },
+      
+      
     ],
   }),
-  components: { DsInput, DsButton, DsSelect, AddAccount, DsCard, DsTable },
+  components: { DsInput, DsButton, DsSelect, AddAccount, DsCard, DsTable, DsFooter, DsSvg },
   computed: {
     bodyData() {
       return this.people;
@@ -276,5 +287,17 @@ export default {
       }
     }
   }
+}
+.text-td,.text-td-action{
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  color: #333333;
+  font-size: 12px;
+}
+.text-td-action{
+  padding-right: 10px;
+}
+.status-logo{
+  margin-right: 10px;
 }
 </style>
