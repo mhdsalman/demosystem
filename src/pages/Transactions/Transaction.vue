@@ -15,7 +15,6 @@
     </header>
     <ds-card>
       <template #body>
-        {{ bodyData }}
         <ds-table class="table-view" :header="tableHeader" v-model="bodyData">
           <template #icon="row">
             <p class="text-td">{{ row.data.date }}</p>

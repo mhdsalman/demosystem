@@ -7,20 +7,25 @@
       </div>
       <ds-divider class="header-divider" />
       <div class="sidebar-list">
-        <router-link to="#">
+        <router-link to="/dashboard" exact>
           <li>Dashboard</li>
         </router-link>
         <div class="d-flex">
-          <router-link to="/account">
+          <router-link to="/account" exact>
             <li>Bank Connect</li>
           </router-link>
           <div class="ds-arrow">
             <ds-svg name="arrow" class="arrow-img" />
           </div>
         </div>
-        <router-link to="/transaction">
-          <li>Transactions</li>
-        </router-link>
+        <div class="d-flex">
+          <router-link to="/transaction" exact>
+            <li>Transactions</li>
+          </router-link>
+          <div class="ds-arrow">
+            <ds-svg name="arrow" class="arrow-img" />
+          </div>
+        </div>
       </div>
     </div>
     <div class="app-pages">
@@ -119,6 +124,9 @@ export default {
     }
     .sidebar-list {
       margin-top: 10px;
+      a {
+        text-decoration: none;
+      }
       li {
         font-family: "Segoe UI Semilight", "Segoe UI Regular", "Segoe UI",
           sans-serif;
@@ -127,7 +135,7 @@ export default {
         text-align: left;
         font-size: 16px;
         list-style-type: none;
-        padding: 5px 12px;
+        padding: 7px 12px;
       }
     }
   }
@@ -164,12 +172,19 @@ export default {
 .ds-arrow {
   display: flex;
   align-items: center;
-  margin: auto 0 auto auto;
+  margin: auto 10px auto auto;
 }
 .text-style {
   font-family: "Arial", sans-serif;
   color: #323130;
   font-size: 18px;
   font-weight: normal;
+}
+.router-link-active li {
+  font-family: "Segoe UI Semibold", "Segoe UI Regular", "Segoe UI", sans-serif !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  padding: 7px 6px !important;
+  border-left: 5px solid #ffffff;
 }
 </style>

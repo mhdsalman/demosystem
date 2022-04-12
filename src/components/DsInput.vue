@@ -124,7 +124,7 @@ export default {
   background-color: #ffffff;
   box-sizing: border-box;
   font-family: 'PingFang SC ', 'PingFang SC', sans-serif;
-  color: #999999;
+  color: #323130;
  }
  .input:focus-visible {
   border: 2px solid #0091f7;
