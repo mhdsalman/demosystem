@@ -7,20 +7,9 @@
       </div>
       <ds-divider class="header-divider" />
       <div class="sidebar-list">
-        <router-link to="/dashboard" exact>
-          <li>Dashboard</li>
-        </router-link>
-        <div class="d-flex">
-          <router-link to="/account" exact>
-            <li>Bank Connect</li>
-          </router-link>
-          <div class="ds-arrow">
-            <ds-svg name="arrow" class="arrow-img" />
-          </div>
-        </div>
-        <div class="d-flex">
-          <router-link to="/transaction" exact>
-            <li>Transactions</li>
+          <div v-for="(link, index) in links" :key="index" class="d-flex">
+          <router-link :to="link.path" exact>
+            <li>{{ link.name }}</li>
           </router-link>
           <div class="ds-arrow">
             <ds-svg name="arrow" class="arrow-img" />
@@ -95,6 +84,16 @@ export default {
         icon: "logout",
       },
     ],
+      links: [
+      {
+        name: 'Bank Connect',
+        path: '/account'
+      },
+      {
+        name: 'Transactions',
+        path: '/transactions'
+      },
+    ],
   }),
   methods: {
     toggle() {
@@ -133,6 +132,9 @@ export default {
         height: 25px;
         width: 25px;
       }
+      text{
+        margin-bottom: 7px;
+      }
     }
 
     .header-divider {
@@ -164,6 +166,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    text-align: center;
   }
 
   .app-pages {
@@ -195,6 +198,7 @@ export default {
   color: #323130;
   font-size: 18px;
   font-weight: normal;
+  margin-right: 5px;
 }
 .router-link-active li {
   font-family: "Segoe UI Semibold", "Segoe UI Regular", "Segoe UI", sans-serif !important;

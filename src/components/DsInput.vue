@@ -89,8 +89,7 @@ export default {
 
 <style lang="scss" scoped>
 .ds-input {
- width: 100%;
-
+  width: 100%;
  /*Is Required*/
  .is-required {
   color: lightcoral;
@@ -109,7 +108,7 @@ export default {
 
  .input {
   outline: none;
-  width: 240px;
+  width: 100%;
   height: 30px;
   padding: 2px 2px 2px 10px;
   border-radius: 2px;
@@ -121,7 +120,6 @@ export default {
   text-overflow: ellipsis;
  }
  .bank-input{
-  width: 240px;
   height: 36px;
   padding: 2px 28px 2px 10px;
   border-radius: 2px;
@@ -132,10 +130,10 @@ export default {
   color: #323130;
   position: relative;
  }
- .input:focus-visible {
-  border: 2px solid #0091f7;
- }
  .bank-input:focus-visible{
+    border: 2px solid #000 !important;
+ }
+ .input:focus-visible{
     border: 2px solid #000 !important;
  }
  .custom-svg{

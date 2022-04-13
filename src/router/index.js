@@ -17,19 +17,19 @@ const ifNotAuthenticated = (to, from, next) => {
   next();
  }
  else {
-  next({ name: 'ds-dashboard' });
+  next({ name: 'ds-transaction' });
  }
 };
 
 const privateRoutes = [
+//  {
+//   path: '/dashboard',
+//   name: 'ds-dashboard',
+//   component: DsDashboard,
+//   beforeEnter: ifAuthenticated,
+//  },
  {
-  path: '/dashboard',
-  name: 'ds-dashboard',
-  component: DsDashboard,
-  beforeEnter: ifAuthenticated,
- },
- {
-  path: '/transaction',
+  path: '/transactions',
   name: 'ds-transaction',
   component: Transaction,
   beforeEnter: ifAuthenticated,

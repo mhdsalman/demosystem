@@ -25,6 +25,9 @@ export default {
   float: left;
   margin: 30px auto 70px auto;
 }
+.footer-selector .ds-selector .selector{
+  border: 1px solid #e4e4e4 !important;
+}
 .footer-btn {
   float: right;
   display: flex;

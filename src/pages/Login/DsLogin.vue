@@ -29,7 +29,7 @@ export default {
   ...mapActions(['loginByApiKey']),
   async onLogin() {
    await this.loginByApiKey();
-   this.$router.push({ name: 'ds-dashboard' });
+   this.$router.push({ name: 'ds-transaction' });
   }
  }
 }
@@ -45,6 +45,9 @@ export default {
  align-items: center;
  justify-content: center;
 
+:deep(.input){
+    // width: ;
+}
  .submit {
   width: 100%;
   display: flex;

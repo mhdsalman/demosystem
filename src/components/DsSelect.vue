@@ -93,11 +93,10 @@ export default {
  }
 
  .selector {
-  border: 1px solid #9b9b9b;
   position: relative;
   z-index: 1;
   border-radius: 2px;
-    padding: 2px 2px 2px 10px;
+  padding: 2px 2px 2px 10px;
   border-radius: 3px;
   border: 1px solid #8a8886;
   background-color: #ffffff;

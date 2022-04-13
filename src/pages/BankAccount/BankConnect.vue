@@ -28,7 +28,7 @@
           <template #status="row">
             <ds-svg class="status-logo" :name="row.data.colorIcon" />
             <p class="text-td">{{ row.data.status }}</p>
-            <ds-svg v-if="row.data.title === 'refresh'" name="help" />
+            <ds-svg v-if="row.data.title === 'refresh'" name="help" class="help-icon"/>
           </template>
           <template #transactionsFetched="row">
             <p class="text-td pl-1">{{ row.data.transactionsFetched }}</p>
@@ -219,7 +219,7 @@ export default {
         space: "half",
       },
       {
-        label: "name",
+        label: "Name",
         name: "name",
       },
       {
@@ -299,5 +299,8 @@ export default {
 }
 .status-logo{
   margin-right: 10px;
+}
+.help-icon{
+  margin: auto 0 auto auto;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <button @click.prevent="onClick" :style="[{ width: width + 'px' }]" :size="size"
+  <button :style="[{ width: width + 'px' }]" :size="size"
     :class="[ customStyle ? 'default-btn custom-btn': 'default-btn ds-button', `bg-${background}`, `size-${size}`]">
     <ds-svg v-if="iconBefore" class="btn-icon" :name="iconBefore" />
     <slot name="before"></slot>
@@ -55,9 +55,6 @@ export default {
     }
   },
   methods: {
-    onClick() {
-      this.$emit("click");
-    },
   },
 };
 </script>
@@ -112,6 +109,9 @@ export default {
   }
  
 }
+.default-btn:hover{
+    background-color: #575756;
+}
  .custom-btn{
    width: 90px;
   height: 32px;
@@ -121,5 +121,10 @@ export default {
   font-family: 'PingFang SC ', 'PingFang SC', sans-serif;
   color: #333333;
   font-size: 12px;
+  }
+  .custom-btn:hover{
+   
+  border: 1px solid #333333;
+ 
   }
 </style>
